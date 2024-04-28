@@ -1,3 +1,9 @@
+# Mac
+*.DS_Store
+
+# IDE
+*/.idea
+
 # Compiled class file
 *.class
 
