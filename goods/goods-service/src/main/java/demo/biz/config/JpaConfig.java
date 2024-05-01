@@ -1,4 +1,4 @@
-package demo.config;
+package demo.biz.config;
 
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;

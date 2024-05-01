@@ -14,9 +14,11 @@ public class QueryGoodsResp implements Serializable {
 
     private Long id;
 
-    private String goodsNo;
+    private String goodsCode;
 
     private String goodsName;
+
+    private String goodsType;
 
     private BigDecimal price;
 

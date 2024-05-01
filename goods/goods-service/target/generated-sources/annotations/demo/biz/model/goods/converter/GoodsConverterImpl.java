@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-01T11:56:19+0800",
+    date = "2024-05-01T19:14:04+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Oracle Corporation)"
 )
 @Component
@@ -22,8 +22,9 @@ public class GoodsConverterImpl implements GoodsConverter {
         QueryGoodsResp queryGoodsResp = new QueryGoodsResp();
 
         queryGoodsResp.setId( entity.getId() );
-        queryGoodsResp.setGoodsNo( entity.getGoodsNo() );
+        queryGoodsResp.setGoodsCode( entity.getGoodsCode() );
         queryGoodsResp.setGoodsName( entity.getGoodsName() );
+        queryGoodsResp.setGoodsType( entity.getGoodsType() );
         queryGoodsResp.setPrice( entity.getPrice() );
 
         return queryGoodsResp;
