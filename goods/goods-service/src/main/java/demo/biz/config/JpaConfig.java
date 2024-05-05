@@ -25,7 +25,7 @@ import java.util.Objects;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "entityManagerFactoryDemo",
 		transactionManagerRef = "transactionManagerDemo",
-		basePackages = { "demo.biz.repository" }) // scan JPA SQL package
+		basePackages = { "demo.biz.persistence" }) // scan JPA SQL package
 public class JpaConfig {
 
 	public static final String Demo_PU = "DemoPersistenceUnit";
@@ -51,7 +51,7 @@ public class JpaConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryDemo(EntityManagerFactoryBuilder builder) {
 		return builder
 				.dataSource(DemoDataSource)
-				.packages("demo.biz.repository.entity", "demo.biz.repository.po")
+				.packages("demo.biz.persistence.entity", "demo.biz.persistence.po")
 				.persistenceUnit(Demo_PU)
 				.properties(getVendorProperties())
 				.build();

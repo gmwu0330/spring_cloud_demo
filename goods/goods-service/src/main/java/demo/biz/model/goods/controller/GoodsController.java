@@ -14,23 +14,18 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/goods")
 public class GoodsController implements GoodsApi {
 
     private final GoodsService goodsService;
 
     @Override
-    @PostMapping("/query/list")
-    public BaseResponse<List<QueryGoodsResp>> queryList() {
-        List<QueryGoodsResp> listResp = goodsService.queryAll();
-        return new BaseResponse<>(listResp);
+    public BaseResponse<List<QueryGoodsResp>> queryList(QueryGoodsReq req) {
+        return BaseResponse.successWithData(goodsService.queryAll(req));
     }
 
     @Override
-    @PostMapping("/query/page")
     public BaseResponse<PageResp<QueryGoodsResp>> queryPage(PageReq<QueryGoodsReq> pageReq) {
-        PageResp<QueryGoodsResp> pageResp = goodsService.queryPage(pageReq);
-        return new BaseResponse<>(pageResp);
+        return BaseResponse.successWithData(goodsService.queryPage(pageReq));
     }
 
 }

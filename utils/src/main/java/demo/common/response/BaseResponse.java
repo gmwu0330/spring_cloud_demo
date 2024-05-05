@@ -3,6 +3,7 @@ package demo.common.response;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
 
@@ -11,9 +12,7 @@ import java.io.Serializable;
 @Data
 public class BaseResponse<T> implements Serializable {
 
-    private static final String SUCCESS_CODE = "200";
-
-    private String code = SUCCESS_CODE;
+    private int code;
     private Boolean success = true;
     private T data;
 
@@ -21,8 +20,8 @@ public class BaseResponse<T> implements Serializable {
         this.data = data;
     }
 
-//    public static BaseResponse<T> successWithData(T data){
-//        return new BaseResponse<T>(SUCCESS_CODE, true, data);
-//    }
+    public static <T> BaseResponse<T> successWithData(T data){
+        return new BaseResponse<>(HttpStatus.OK.value(), true, data);
+    }
 
 }

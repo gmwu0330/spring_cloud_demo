@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class QueryGoodsReq implements Serializable {
     private Long id;
     private String goodsCode;
     private String goodsName;
-    private String goodsType;
+    private Collection<String> goodsTypes;
     private BigDecimal priceMax;
     private BigDecimal priceMin;
 }

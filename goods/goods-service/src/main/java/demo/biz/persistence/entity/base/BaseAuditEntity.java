@@ -1,13 +1,19 @@
-package demo.common.entity;
+package demo.biz.persistence.entity.base;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 @Data
 public class BaseAuditEntity implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "create_time")
     private LocalDateTime createTime;

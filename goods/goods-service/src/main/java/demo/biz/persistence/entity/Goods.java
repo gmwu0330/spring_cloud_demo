@@ -1,17 +1,15 @@
-package demo.biz.repository.entity;
+package demo.biz.persistence.entity;
 
-import demo.common.entity.BaseAuditEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import demo.biz.persistence.entity.base.BaseAuditEntity;
+import demo.enums.GoodsType;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "t_goods")
 public class Goods extends BaseAuditEntity {
@@ -25,8 +23,9 @@ public class Goods extends BaseAuditEntity {
     @Column(name = "goods_name")
     private String goodsName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "goods_type")
-    private String goodsType;
+    private GoodsType goodsType;
 
     @Column(name = "price")
     private BigDecimal price;

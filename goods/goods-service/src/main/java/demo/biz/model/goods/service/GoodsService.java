@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface GoodsService {
 
-    List<QueryGoodsResp> queryAll();
+    List<QueryGoodsResp> queryAll(QueryGoodsReq req);
 
     PageResp<QueryGoodsResp> queryPage(PageReq<QueryGoodsReq> pageReq);
 
