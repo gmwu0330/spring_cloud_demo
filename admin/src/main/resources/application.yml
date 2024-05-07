@@ -1,10 +1,10 @@
 server:
-  port: 9100
+  port: 8080
 
 # Data source
 demo-datasource:
   driver-class-name: com.mysql.cj.jdbc.Driver
-  jdbcUrl: jdbc:mysql://localhost:3306/demo_goods?serverTimezone=UTC&useSSL=false
+  jdbcUrl: jdbc:mysql://localhost:3306/demo_admin?serverTimezone=UTC&useSSL=false
   maximum-pool-size: 5
   minimum-idle: 1
   idle-timeout: 20000

@@ -1,7 +1,7 @@
 package demo.biz.persistence.entity;
 
 import demo.biz.persistence.entity.base.BaseAuditEntity;
-import demo.enums.GoodsType;
+import demo.enums.GoodsTypeEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,7 +25,7 @@ public class Goods extends BaseAuditEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "goods_type")
-    private GoodsType goodsType;
+    private GoodsTypeEnum goodsType;
 
     @Column(name = "price")
     private BigDecimal price;

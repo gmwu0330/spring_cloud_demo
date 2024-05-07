@@ -1,25 +1,6 @@
 server:
   port: 9100
 
-spring:
-  application:
-    name: goods
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:todolist
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: eren_demo
-
-  jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
-    open-in-view: false
-
-
 # Data source
 demo-datasource:
   driver-class-name: com.mysql.cj.jdbc.Driver

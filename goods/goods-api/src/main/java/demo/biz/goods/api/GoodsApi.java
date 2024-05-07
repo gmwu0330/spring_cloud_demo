@@ -1,7 +1,7 @@
 package demo.biz.goods.api;
 
 import demo.biz.goods.request.QueryGoodsReq;
-import demo.biz.goods.response.QueryGoodsResp;
+import demo.biz.goods.response.GoodsResp;
 import demo.common.request.PageReq;
 import demo.common.response.BaseResponse;
 import demo.common.response.PageResp;
@@ -15,9 +15,9 @@ public interface GoodsApi {
     String PREFIX = "/goods";
 
     @PostMapping(PREFIX + "/query/list")
-    BaseResponse<List<QueryGoodsResp>> queryList(@RequestBody QueryGoodsReq req);
+    BaseResponse<List<GoodsResp>> queryList(@RequestBody QueryGoodsReq req);
 
     @PostMapping(PREFIX + "/query/page")
-    BaseResponse<PageResp<QueryGoodsResp>> queryPage(@RequestBody PageReq<QueryGoodsReq> pageReq);
+    BaseResponse<PageResp<GoodsResp>> queryPage(@RequestBody PageReq<QueryGoodsReq> pageReq);
 
 }

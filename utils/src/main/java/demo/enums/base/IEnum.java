@@ -1,4 +1,4 @@
-package demo.enums;
+package demo.enums.base;
 
 public interface IEnum {
 

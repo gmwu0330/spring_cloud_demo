@@ -1,6 +1,6 @@
 package demo.biz.goods.response;
 
-import demo.enums.GoodsType;
+import demo.enums.GoodsTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class QueryGoodsResp implements Serializable {
+public class GoodsResp implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class QueryGoodsResp implements Serializable {
 
     private String goodsName;
 
-    private GoodsType goodsType;
+    private GoodsTypeEnum goodsType;
 
     private BigDecimal price;
 

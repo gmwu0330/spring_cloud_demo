@@ -1,7 +1,7 @@
 package demo.biz.model.goods.service.impl;
 
 import demo.biz.goods.request.QueryGoodsReq;
-import demo.biz.goods.response.QueryGoodsResp;
+import demo.biz.goods.response.GoodsResp;
 import demo.biz.model.goods.service.GoodsService;
 import demo.biz.model.goods.converter.GoodsConverter;
 import demo.biz.persistence.helper.PageHelper;
@@ -24,16 +24,16 @@ public class GoodsServiceImpl implements GoodsService {
     private final GoodsConverter goodsConverter;
 
     @Override
-    public List<QueryGoodsResp> queryAll(QueryGoodsReq req) {
+    public List<GoodsResp> queryAll(QueryGoodsReq req) {
         return goodsRepository.findByCondition(req).stream().map(goodsConverter::toResp).toList();
     }
 
     @Override
-    public PageResp<QueryGoodsResp> queryPage(PageReq<QueryGoodsReq> pageReq) {
+    public PageResp<GoodsResp> queryPage(PageReq<QueryGoodsReq> pageReq) {
         Page<Goods> pageResult = goodsRepository.findByConditionPage(pageReq.getQueries(),
                 PageRequest.of(pageReq.getPage(), pageReq.getSize(), PageHelper.DEFALT_SORT));
 
-        List<QueryGoodsResp> respList = pageResult.getContent().stream().map(goodsConverter::toResp).toList();
+        List<GoodsResp> respList = pageResult.getContent().stream().map(goodsConverter::toResp).toList();
         return new PageResp<>(pageReq.getPage(), pageReq.getSize(), pageResult.getTotalPages(), pageResult.getTotalElements(), pageResult.hasNext(), respList);
     }
 
