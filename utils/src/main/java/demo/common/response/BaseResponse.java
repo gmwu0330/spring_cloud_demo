@@ -24,4 +24,8 @@ public class BaseResponse<T> implements Serializable {
         return new BaseResponse<>(HttpStatus.OK.value(), true, data);
     }
 
+    public static BaseResponse<Void> success(){
+        return new BaseResponse<>(HttpStatus.OK.value(), true, null);
+    }
+
 }
