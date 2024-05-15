@@ -1,14 +1,14 @@
 package demo.repository.repository;
 
 
-import demo.repository.entity.AuthBaseUser;
+import demo.repository.entity.AuthUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.Optional;
 
-public interface AuthUserRepository extends JpaRepository<AuthBaseUser, Long>, JpaSpecificationExecutor<AuthBaseUser> {
+public interface AuthUserRepository extends JpaRepository<AuthUser, Long>, JpaSpecificationExecutor<AuthUser> {
 
-    Optional<AuthBaseUser> findByUsername(String username);
+    Optional<AuthUser> findByUsername(String username);
 
 }

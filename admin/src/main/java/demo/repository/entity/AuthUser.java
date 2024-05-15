@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "auth_base_user")
-public class AuthBaseUser extends BaseAuditEntity {
+public class AuthUser extends BaseAuditEntity {
 
     @Id
     private Long id;

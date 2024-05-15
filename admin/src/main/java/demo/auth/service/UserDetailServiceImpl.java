@@ -1,7 +1,7 @@
 package demo.auth.service;
 
 import demo.auth.bo.LoginUser;
-import demo.repository.entity.AuthBaseUser;
+import demo.repository.entity.AuthUser;
 import demo.repository.repository.AuthUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AuthBaseUser authUser = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found !!"));
+        AuthUser authUser = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found !!"));
 
         LoginUser loginUser = new LoginUser();
         loginUser.setUsername(loginUser.getUsername());

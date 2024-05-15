@@ -1,12 +1,13 @@
 package demo.model.user.service.impl;
 
-import demo.biz.model.user.api.request.QueryUserReq;
-import demo.biz.model.user.api.response.UserResp;
-import demo.biz.model.user.converter.UserConverter;
-import demo.biz.model.user.service.UserService;
-import demo.biz.persistence.repository.UserRepository;
+
 import demo.common.request.PageReq;
 import demo.common.response.PageResp;
+import demo.model.user.api.request.QueryUserReq;
+import demo.model.user.api.response.UserResp;
+import demo.model.user.converter.UserConverter;
+import demo.model.user.service.UserService;
+import demo.repository.repository.AuthUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final AuthUserRepository userRepository;
     private final UserConverter userConverter;
 
     @Override

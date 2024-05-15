@@ -1,9 +1,10 @@
 package demo.model.user.service;
 
-import demo.biz.model.user.api.request.QueryUserReq;
-import demo.biz.model.user.api.response.UserResp;
+
 import demo.common.request.PageReq;
 import demo.common.response.PageResp;
+import demo.model.user.api.request.QueryUserReq;
+import demo.model.user.api.response.UserResp;
 
 import java.util.List;
 
