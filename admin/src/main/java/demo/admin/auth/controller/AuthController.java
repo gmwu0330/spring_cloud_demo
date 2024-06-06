@@ -1,7 +1,7 @@
 package demo.admin.auth.controller;
 
 import demo.admin.auth.request.LoginReq;
-import demo.admin.auth.service.AuthService;
+import demo.admin.auth.service.LoginService;
 import demo.admin.auth.response.LoginResp;
 import demo.common.response.BaseResponse;
 import jakarta.validation.Valid;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
 
-    private final AuthService authService;
+    private final LoginService authService;
 
     @PostMapping("/login")
     public BaseResponse<LoginResp> login(@RequestBody @Valid LoginReq req) {

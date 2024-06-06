@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class UserDetailServiceImpl implements UserDetailsService {
+public class LoginAuthService implements UserDetailsService {
 
-    private final AuthUserRepository userRepository;
+    private final AuthUserRepository authUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AuthUser authUser = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found !!"));
+        AuthUser authUser = authUserRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found !!"));
 
         LoginUser loginUser = new LoginUser();
         loginUser.setUsername(authUser.getUsername());

@@ -1,6 +1,12 @@
 server:
   port: 8080
 
+jwt:
+  demo:
+    iss: open sesame
+    secret: 54ef36ec71201fdf9d1423fd26f97f6b #MD5(open sesame)
+
+
 # Data source
 demo-datasource:
   driver-class-name: com.mysql.cj.jdbc.Driver

@@ -3,22 +3,21 @@ package demo.admin.auth.service;
 import demo.admin.auth.bo.LoginUser;
 import demo.admin.auth.request.LoginReq;
 import demo.admin.auth.response.LoginResp;
+import demo.admin.common.utils.JwtUtils;
 import demo.admin.repository.AuthUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AuthService {
+public class LoginService {
 
     private final AuthUserRepository authUserRepository;
     private final AuthenticationManager authenticationManager;
-    private final PasswordEncoder passwordEncoder;
 
     public LoginResp login(LoginReq loginRequest) {
         final String username = loginRequest.getUsername();
@@ -35,16 +34,19 @@ public class AuthService {
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 
         // 將使用者的ID、名稱等資訊保存在jwt的token中
+        String token = JwtUtils.generateToken(loginUser);
+
         LoginResp loginResp = new LoginResp();
         loginResp.setUsername(username);
+        loginResp.setToken(token);
 
         return loginResp;
     }
 
     public void test() {
         authUserRepository.findByUsername("admin").ifPresent(user -> {
-            user.setPassword(passwordEncoder.encode("admin123"));
-            authUserRepository.save(user);
+//            user.setPassword(passwordEncoder.encode("admin123"));
+//            authUserRepository.save(user);
         });
     }
 
