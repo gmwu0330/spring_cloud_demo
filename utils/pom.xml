@@ -11,7 +11,7 @@
 		<relativePath/>
 	</parent>
 
-    <groupId>eren.demo</groupId>
+    <groupId>eren.micro.demo</groupId>
     <artifactId>utils</artifactId>
     <version>1.0-SNAPSHOT</version>
 

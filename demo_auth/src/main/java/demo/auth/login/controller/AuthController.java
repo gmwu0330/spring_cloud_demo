@@ -1,0 +1,30 @@
+package demo.auth.login.controller;
+
+import demo.auth.login.response.LoginResp;
+import demo.auth.login.service.LoginService;
+import demo.auth.login.request.LoginReq;
+import demo.common.response.BaseResponse;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    private final LoginService authService;
+
+    @PostMapping("/login")
+    public BaseResponse<LoginResp> login(@RequestBody @Valid LoginReq req) {
+        return BaseResponse.successWithData(authService.login(req));
+    }
+
+    @PostMapping("/test")
+    public BaseResponse<Void> test() {
+        authService.test();
+        return BaseResponse.success();
+    }
+
+}

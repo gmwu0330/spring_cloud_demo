@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+jwt:
+  demo:
+    iss: open sesame
+    secret: 54ef36ec71201fdf9d1423fd26f97f6b #MD5(open sesame)
+
+
+# Data source
+auth-datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  jdbcUrl: jdbc:mysql://127.0.0.1:3306/demo_auth?serverTimezone=UTC&useSSL=false
+  maximum-pool-size: 5
+  minimum-idle: 1
+  idle-timeout: 20000
+  username: root
+  password: root123456
