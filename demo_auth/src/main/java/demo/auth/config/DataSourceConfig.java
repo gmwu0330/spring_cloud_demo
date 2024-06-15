@@ -11,11 +11,6 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    @Primary
-	@Bean("DemoAuthDataSource")
-	@ConfigurationProperties(prefix = "auth-datasource")
-	public DataSource DemoAuthDataSource() {
-		return DataSourceBuilder.create().build();
-	}
+
 
 }

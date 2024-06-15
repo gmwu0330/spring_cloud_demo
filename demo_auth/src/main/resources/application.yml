@@ -1,6 +1,11 @@
 server:
   port: 8080
 
+# Spring
+spring:
+  jpa:
+    show-sql: true
+
 jwt:
   demo:
     iss: open sesame
@@ -16,3 +21,4 @@ auth-datasource:
   idle-timeout: 20000
   username: root
   password: root123456
+
