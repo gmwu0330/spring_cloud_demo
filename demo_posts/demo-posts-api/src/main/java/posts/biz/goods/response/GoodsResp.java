@@ -1,6 +1,5 @@
 package posts.biz.goods.response;
 
-import demo.enums.GoodsTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

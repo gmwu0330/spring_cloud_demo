@@ -3,8 +3,8 @@ package demo.auth.common.login.service;
 import demo.auth.common.login.bo.LoginUser;
 import demo.auth.common.login.request.LoginReq;
 import demo.auth.common.login.response.LoginResp;
+import demo.auth.common.property.InMemoryService;
 import demo.auth.common.utils.JwtUtils;
-import demo.auth.persistence.redis.RedisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,7 +32,7 @@ public class LoginService {
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 
         // TODO 放進Redis
-        RedisService.addUser(loginUser);
+        InMemoryService.addUser(loginUser);
 
         // 將使用者的ID、名稱等資訊保存在jwt的token中
         String token = JwtUtils.generateToken(loginUser.getUsername());

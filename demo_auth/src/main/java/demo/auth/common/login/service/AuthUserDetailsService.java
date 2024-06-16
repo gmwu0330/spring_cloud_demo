@@ -1,6 +1,7 @@
 package demo.auth.common.login.service;
 
 import demo.auth.common.login.bo.LoginUser;
+import demo.auth.persistence.repository.UserRoleRepository;
 import demo.auth.persistence.repository.entity.AuthUser;
 import demo.auth.persistence.repository.AuthUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import java.util.List;
 public class AuthUserDetailsService implements UserDetailsService {
 
     private final AuthUserRepository authUserRepository;
+    private final UserRoleRepository userRoleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -29,15 +31,15 @@ public class AuthUserDetailsService implements UserDetailsService {
         LoginUser loginUser = new LoginUser();
         loginUser.setUsername(authUser.getUsername());
         loginUser.setPassword(authUser.getPassword());
-        loginUser.setAccountNonLocked(!authUser.isLocked());
-        loginUser.setEnabled(authUser.isEnabled());
+        loginUser.setAccountNonLocked(!authUser.getLocked().getBoolean());
+        loginUser.setEnabled(authUser.getEnabled().getBoolean());
 
         // 判斷過期
         loginUser.setAccountNonExpired(true);
         loginUser.setCredentialsNonExpired(true);
 
         List<GrantedAuthority> auths = new ArrayList<>();
-        auths.add(new SimpleGrantedAuthority("ADMIN"));
+        userRoleRepository.findByUsername(username).forEach(userRole -> auths.add(new SimpleGrantedAuthority(userRole.getAuthRole().getValue())));
         loginUser.setAuthorities(auths);
 
         return loginUser;

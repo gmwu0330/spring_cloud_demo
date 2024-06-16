@@ -1,32 +1,23 @@
 package demo.auth.config;
 
+import demo.auth.common.enums.AuthRoleEnum;
 import demo.auth.common.filter.AuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.authorization.AuthorizationDecision;
-import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
-
-import java.util.function.Supplier;
 
 @EnableWebSecurity
 @Configuration
@@ -76,12 +67,12 @@ public class WebSecurityConfig {
                         requests -> requests
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers("/demo/**").permitAll()
-                                .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                                .requestMatchers("/member/**").hasAuthority("MEMBER")
+                                .requestMatchers("/admin/**").hasAuthority(AuthRoleEnum.ADMIN.getValue())
+                                .requestMatchers("/member/**").hasAuthority(AuthRoleEnum.MEMBER.getValue())
                                 .anyRequest().denyAll()
                 )
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(new AuthenticationFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build()
                 ;
     }

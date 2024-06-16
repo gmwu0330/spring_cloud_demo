@@ -1,7 +1,5 @@
 package demo.enums.base;
 
-public interface IEnum {
-
-    String getValue();
-
+public interface IEnum<T> {
+    T getValue();
 }
